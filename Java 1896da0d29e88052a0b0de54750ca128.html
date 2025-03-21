@@ -1,0 +1,1432 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Java</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1896da0d-29e8-8052-a0b0-de54750ca128" class="page sans"><header><h1 class="page-title">Java</h1><p class="page-description"></p></header><div class="page-body"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-8036-a6a9-c9a657187c91" class="code"><code class="language-JSON">OOP:-
+data can be accessed by method only
+classes, objects, message passing
+reusability, modularity, flexibility, scalability, and easier maintenance
+attribute-particular obj can change its properties
+method-operations
+instance-object, run-time entity of class, same properties, same operation
+state, behavior, identity
+
+Principles of OOPs - 
+abstraction(hide complexity), through interfaces &amp; abstract classes
+encapsulation/data-hiding(binding data and method into single funcitonal unit, private/public), 
+Inheritance - extends, “is-a” relationship.
+polymorphism(many forms, overloading-same method name taking diff input, overriding-implement method of super class), 
+
+
+hierarchy(ranking/order of abstractios, generalization-class structure h super class sub class, aggregation-object structure h nested objects, &quot;has-a&quot; relationship), 
+
+modularity - divide program to smaller units
+
+ typing,- conversion, implicit and expllicit, inherently language implementation dependent, java is strongly typed lang
+
+persistence - ability of obj to persist the program that creaates, acess or modifies it
+
+static - common to all instances and shared among them
+abstract- too generic for all objects and its sub class, it can&#x27;t be instantiated, may have &gt;=0 abstract methods (methods that do not have any implementation)
+interface- contract for classes to implement their own behaviour, all methods inside interface are public and abstract
+
+Method Overloading - compile-time polymorphism / static polymorphism / Early binding, same name with different signature(Parameters), return type of these methods can or cannot be same,
+										 Type conversion to the next higher family (byte -&gt; short/char -&gt; int -&gt; long -&gt; float -&gt; double -&gt; object)
+
+Method Overriding - run-time polymorphism, @Override, same name, return-type &amp; parameters as of parent class, more permissive access modifiers are allowed (protected -&gt; public),
+										Private methods can not be overridden, Method must have the same return type (or subtype),
+										If the super-class overridden method does not throw an exception, the subclass overriding method can only throw the unchecked exception
+																												do throw exception,                                                             same / subclass / no exception																								
+
+Method Hiding - static method in super-class hides static method of sub-class and not overrides
+
+=&gt; super() constructor must be called to create an object. // optionally provided by the compiler
+=&gt; Constructor in Java can not be abstract, final, static, or Synchronized.
+=&gt; Access modifiers can be used in constructor declaration to control its access i.e which other class can call the constructor. A private constructor is used in restricting object creation. 
+
+import static class.* -&gt; use static members or methods in another package directly without class
+
+UML(unified modeing language, graphical tools, )
+modelling-representation, blueprint
+13 diagrams
+structure-concepts/elements of the system, static view
+behaviour-genral behaviour, dynamic view
+interaction-interaction to other entities, dynamic view
+
+Use Case Diagram-
+actor (user of system,)
+usecase (functionality provided to users)
+association (solid lines, actor interaction with use cases)
+include (may contain functionality of another use case)
+extend (optional behaviour, may use functionality of another use case)
+system boundary (reactangle box with use case inside and actors outside)
+
+Class Diagram:-
+static structure of system
+classes (represent entities with common characteristics or features)
+feature (attributes, operations, associations)
+associations (realtionship b/w two or more classes)
+realtionships:-
+association - multiplicity (how many instances of one entity are reated to other entity), association class (make possible for association b/w other classes)
+
+inheritance/genralization- super and sub class realtion, is-a-type-of, 
+
+aggreagation- has a relation, exist independently, triangle arrow points towards whole
+ composition- strong aggregation, does not exist independently, shaded diamond points towards whole
+
+ dependency - using or uses relationship, one element uses another element, changes affect
+
+realization - realtion b/w class(circle) &amp; interface (reactangle box, a contract that can be implemented by classes which may/may not be related), straight line b/w them, 
+
+
+Sequence Diagram:-
+obj interaction arranged in time sequnce, table with obj in x-axis &amp; messages in y-axis, sequential flow, branching, iteration, concurrency
+object-instance of class(optional)
+lifeline-obj life during interaction, dotted line
+activaton-actual time needed to complete task, reactangle box
+
+create message-msg that represent instantiation of lifeline
+destroy-msg represents destrroying the life cycle of lifeline
+
+synchronous-wait until respond is recieved, filled arrow head
+asynchronous-continue process, doesn&#x27;t wait, unfilled arrow head
+
+self call-recursive call of operation, or one method call aother method of same obj
+return msg-msg represents passing of info back to the caller with msg
+alt-true/false logic flow (if)
+opt-either sole operand happens or nothing happens
+loop(5,10)-min 5 times to max 10 times repeats with condition to break
+
+Activity Diagram:- dynamic nature, modeling flow of control from activity to activity, change state of system, business process or intenral operation
+intial state-filled circle foloowed by arrow 
+final state-arrow pointing to filled circle nested inside another circle
+action state
+
+action flow-transition from one activity to another
+branching- conditon based transition
+fork-divides inout flow to multiple concurrent flows
+merge-joins multile floes into single output
+
+State Chart Diagram:-
+dynamic nature of system, define diff stae of obj during its lifetime
+state-represent situation during lifetime, reactangle box
+trsansition-solid arrow represent path b/w diff state of obj</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-803d-a4c9-d732f2645cb0" class="code"><code class="language-JSON">JAVA
+
+inventor - james gosling at Sun micro-systems, 1995, JDK 23
+
+Write Once and Run Anywhere (WORA)
+
+statically typed and also a strongly typed language - each type of data (such as integer, character, etc) is predefined as part of the programming language
+simple, portable, architecture neutral, platform independent, secure, Multithreading (concurrent execution), robust(garbage coll, array limits check, no direct access to mem add., create threads for multi-programming)
+Just In Time (JIT) compiler, Integrated Development Environment (IDE)
+standard, enterprise, micro
+
+.java (source code, IDE) -&gt; .class (Byte code, platfrom indpendent, javac - java compiler) -&gt; Machine code (JVM) 
+JDK(java dev kit) - compiler, Java Runtime Environment (JRE), Java Debuggers, Java Docs, etc
+JRE(java runtime env.) - browser, JVM, applet support, and plugins
+Garbage Collectors - recollect the objects that are not referenced, handling memory management
+Classpath is the file path where the java runtime and Java compiler look for .class files to load. By default, JDK provides many libraries. If you want to include external libraries they should be added to the classpath.
+
+java virtual machine (JVM) - translate byte code into machine known code (executing the java program line by line, also known as interpreter.)
+dev env.-eclipse, netbeans
+compilation-syntax semantics, JDK(java dev kit)-
+java program -&gt; bytecode(.class file, platform independent) -&gt; run on jvm(platform dependent)
+exec, env-JRE(java runtime env.) -&gt; byte code to machine level code
+
+JDK-&gt;Interpreter(java), Debugger, Complier(javac), JRE-&gt;JVM, other lib.
+
+JVM Memory Areas:-
+Method area: all class level information like class name, immediate parent class name, methods and variables information etc. are stored, including static variables. only one method area per JVM, shared resource. 
+Heap area: Information of all objects is stored. one Heap Area per JVM. shared resource.
+Stack area: For every thread, JVM creates one run-time stack which is stored here. Every block of this stack is called activation record/stack frame which stores methods calls. All local variables of that method are stored in their corresponding frame. 
+	After a thread terminates, its run-time stack will be destroyed by JVM. not a shared resource.
+PC Registers: Store address of current execution instruction of a thread, each thread has separate PC Registers.
+Native method stacks: For every thread, a separate native stack is created. It stores native method information. 
+
+
+Data types:-
+primitive - int(byte, short, int, long), Float(float, double), character(char), boolean(boolean)
+non-primitive(reference-obj) - classes, interfaces, arrays, strings
+
+all objects are stored in heap
+default value of obj is null
+byte-&gt;short-&gt;int-&gt;long-&gt;float-&gt;double
+obj instanceof class/interface
+labeled statement:- used in loops, outer: for(){ break outer;}
+
+public static void main(String args[]){} - entry point
+
+// - single line comments
+/* */ - multi line
+/** */ - documentaion
+
+=&gt; public class filename must have same name as of class name, rest if fine but compiler genrates .class file with class name only
+=&gt; only one class is public in a file, multiple classes can present in a file but not recommended, .class files are made for all classes
+=&gt; When There is no public class in the file, the source file name can be anything, but it must have the .java extension.
+=&gt; The first letter of the class should be in Uppercase (lowercase is allowed but discouraged). Underscores are allowed, but not recommended
+ 
+Access Modifiers -&gt; default, public, protected, private.
+Non-access Modifiers -&gt; final, abstract, static, transient, synchronized, volatile, native.
+ 
+Scanner sc=new Scanner(System.in)
+int i=nextInt(); (nextFloat,....)
+String name=sc.next();
+char c=sc.next().charAt(0);
+
+=&gt;0 is not the falsy value in java, if statement must take true/false values only
+
+
+=&gt; javac -&gt; convert source code to bytecode
+stored in .class file, executed with JVM
+
+=&gt; JVM compiles bytecode and convert to machine code
+
+Rage of Primitive data types:-
+                    size, range, default
+boolean -&gt; 8 bits (Virtual machine dependent (typically 1 byte, 8 bits)), true/false, false
+byte -&gt; 8 bits, -128-&gt;127, 0
+char -&gt; 16 bits, 0 -255, \u0000
+short-&gt; 16 bits, -32768 - 32768, 0
+int -&gt; 32 bits, -2,147,483,648 - 2,147,483,647, 0
+long -&gt; 64 bits, -9,223,372,036,854,775,808 - 9,223,372,036,854,775,807, 0L
+float -&gt; 32 bits, upto 7 decimal, 0.0f
+double -&gt; 64 bits, upto 16 decimals, 0.0d
+
+Types of variables in Java:–
+	Local - block variables, must initialized, inner &amp; outer variable name must be differnt (loops, nested blocks) 
+	Instance - non-static variables, diff memory for diff obj, default data type values, int-0, Integer-null, obj creation &amp; ends
+	Static - class variables, one memory per class, default data type values, class creation &amp; ends, ClassName, ObjectName (Warning), variableName (append ClassName), 
+				 Static variables cannot be declared locally inside an instance method
+
+Scope of Variables:- Instance Variables, Static Variables, Local Variables, Parameter Scope, Block Scope
+
+&lt;&lt; (Left shift) – Shifts bits left, filling 0s (multiplies by a power of two).
+&gt;&gt; (Signed right shift) – Shifts bits right, filling 0s (divides by a power of two), with the leftmost bit depending on the sign.
+&gt;&gt;&gt; (Unsigned right shift) – Shifts bits right, filling 0s, with the leftmost bit always 0.
+
+instanceof operator - used for type checking. check object is an instance of a class, subclass, or interface
+
+Precedence - Postfix *, Prefix *, Mul, Add, Shift, Relational, Equality, Boolean &amp; ^ | , Conditional &amp;&amp; ||, Ternary *, Assignment *
+(* - Right to Left)
+
+ a = b+++c; =&gt;  a = b++ + c; Correct
+ a = b+++++c; =&gt;  a = b++ ++ + c; Incorrect
+ 
+Scanner scn = new Scanner(System.in);  not thread-safe by default
+	int num = sc.nextInt();
+	sc.nextLine();  // must consume new line before taking string input
+	String name = sc.nextLine();  
+
+ 
+Built-in Packages:-
+	java.lang -&gt; primitive data types, math operations
+  java.io -&gt; input / output operations.
+	java.util -&gt; data structures like Linked List, Dictionary and support ; for Date / Time operations, Scanner
+
+For Each Loop:- Array, for( int n : arr ){ }, enhanced for loop
+	Cannot Modify Array Elements Directly, No Access to Index, Single-direction Iteration Only, Performance Overhead due to Iterators
+
+Static Method - Access only static variables and methods, Does not support runtime polymorphism becuase use static binding at compile time, Cannot use this keyword
+If both superclass and subclass have static methods with the same name, it is called Method Hiding, where the subclass method hides the superclass method.
+
+Memory Allocation of Static methods - Permanent Generation space of the heap
+														varaibles - Stack
+														
+Memory Allocation of Instance Method - Metaspace (Java 8), previously Permanent Generation space of the heap
+											(dynamic binding at runtime)						
+											
+What if static variable refers to an Object?  static int i = 1; static Object obj = new Object();
+		Value of i: Stored in Metaspace (PermGen in Java 7 and earlier).
+		Reference obj: Stored in Metaspace, but the object it refers to is stored in the heap.															
+
+Variable Arguments (Varargs) in Java5+ is a method that takes a variable number of arguments
+														 fun(String s, int... a) { }</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-8097-bdba-c101d0de8a5b" class="code"><code class="language-JSON">Access Modifier:-
+Default- within same package
+Private - within the class 
+Protected - accessible within the same package or subclasses in different packages
+Public - accessible  from anywhere
+
+static - non-access modifier
+
+-&gt;Shared memory allocation (allocataed during execution of program, global state)
+-&gt;Accessible without object instantiation
+-&gt;Associated with class, not objects
+-&gt;Cannot access non-static members
+-&gt;Can be overloaded, but not overridden
+-&gt;static block executes before main method to initialize static variables only once
+-&gt;Static local variables are not allowed
+-&gt;static method cannot reference to &quot;this&quot; or &quot;super&quot;
+-&gt;static variables &amp; mehtods present in &quot;method area&quot; which is common for all objects of heap area
+-&gt;only nested class can be static and it can&#x27;t access non-static members of outer class
+
+
+Inheritance :- extends
+
+Abstraction :- abstract class, @Override, implements interface
+
+Polymorphism :- 
+
+static - compile time (method, constuctor overloading), java don&#x27;t support operato0.
+
+r overloading
+
+dynamic - method overriding
+
+Encapsulation :- data hiding, private variables, public getters &amp; setters
+
+
+Interface:- (abstraction, multiple inheritence, loose coupling), IS-A relationship, by default - public, static, final*, abstract
+variables - public, static, final
+methods - public, abstract
+					(default, static, private, private static methods are also allowed)
+
+1. @FunctionalInterface  - multiple default or static methods, but only one abstract method
+													Runnable (run), Comparable(compareTo), ActionListener(actionPerformed), Callable(call)
+													
+													Consumer - one argument, no return value, DoubleConsumer, IntConsumer, LongConsumer, Bi-Consumer
+																		 Consumer&lt;Integer&gt; consumer = (value) -&gt; System.out.println(value); accept(), andThen()
+													Predicate - boolean-valued function of one argument, IntPredicate, DoublePredicate, LongPredicate
+																			Predicate predicate = (value) -&gt; value != null; test(), and(), or(), negate()
+													Function - only a single argument and returns a value, apply(), andThen(), compose(), identity()
+																		 Function&lt;Integer, Double&gt; half = a -&gt; a / 2.0; 
+																		 Bi-Function - BiFunction&lt;Integer, Integer, Integer&gt; add = (a, b) -&gt; a + b; 
+																		 Unary Operator - UnaryOperator&lt;Integer&gt; xor = a -&gt; a ^ 1; 
+																		 Binary Operator - BinaryOperator&lt;Integer&gt; op = BinaryOperator.maxBy((a, b) -&gt; (a &gt; b) ? 1 : ((a == b) ? 0 : -1));
+													Supplier - does not take any input/argument and returns a single output, BooleanSupplier, DoubleSupplier, LongSupplier, IntSupplier
+																			IntSupplier sup = () -&gt; (int)(Math.random() * 10); 		
+2. Marker interface (without any methods) - Serializable ( converting an object into a byte stream so to saved in a file or sent over a network), 
+													  							  Cloneable (creating a copy of an object),
+													  							  Remote interface (objects can be accessed remotely, RMI - Remote Method Invocation)
+
+-&gt; only public interface are allowed
+-&gt; must implements all the methods of interface 
+-&gt;abstract class may contain non-final variables
+-&gt;must initialize variables, but can&#x27;t create object
+-&gt;Inside interface, final methods declaration are not possible.
+
+    default void defaultMethod() { // Default method
+        privateMethod();
+    }
+    static void staticMethod() { // Static method
+        privateStaticMethod();
+    }
+    private void privateMethod() {  // Private method
+        System.out.println(&quot;This is a private method.&quot;);
+    }
+    private static void privateStaticMethod() {  // Private static method
+        System.out.println(&quot;This is a private static method.&quot;);
+    }
+    
+		Nested Interface:- any accessModifier inside class/but only public inside interface, create callback functions
+    public interface NestedInterface {   // Implement nested interface
+        public void nestedMethod();
+    }
+    public static void main(String[] args){
+        NestedInterface nested = new NestedInterface() { 
+            public void nestedMethod(){
+                System.out.println(&quot;Hello from nested interface!&quot;);
+            }
+        };
+        nested.nestedMethod(); // Call nested interface method
+    }
+
+Abstract class :-
+
+-&gt; No obj created
+-&gt; Constructors are allowed
+-&gt; may not have abstract methods (no implementation)
+-&gt; method can be final , but can&#x27;t combine wih abstract method
+-&gt; can have static methods
+-&gt; class may also be abstract and inner classes also
+-&gt; if abstract method in a class, then class must be abstract
+-&gt; must provide all implementation of abstract methods, else class must be abstract
+
+
+Polymorphism:-
+
+virtual Functions :- by default, no body
+data binding
+-&gt; variables are not overridden 
+-&gt; parent class can only access common methods with reference of derived class (upcasting)
+-&gt; child class can&#x27;t reference parent class (downcasting)
+
+
+Inheritence :-
+
+(tight coupling)
+-&gt;Object class is by-default superclass
+-&gt;can only have one parent class
+
+Single inheritance
+Multi-level inheritance
+Multiple inheritances
+Hybrid inheritance
+Hierarchical inheritance</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-80de-883c-fc1b869f5189" class="code"><code class="language-JSON">Arrays :-
+int[] a = new int[10] // default data types, int-0, Object-null, boolean-false
+int[] a = {1,2,3,4,5}
+int[] a = new int[] {1,2,3,4,5}
+int a[];
+
+int[][] arr = {{1,2,3},{4,5,6}};
+int[][][] arr = {{{1,2,3},{4,5,6}}, {{1,2,3},{4,5,6}}};
+
+int[][] arr = {{1,2},{4,5,6}}; // jagged array
+
+sort(), stream(), fill(), setAll(), asList(), binarySearch(), copyOf(), equals(arr1, arr2) - values - 1D, toString(arr) 
+
+For primitive arrays, elements are stored in a contiguous memory location. 
+For non-primitive arrays, references are stored at contiguous locations, but the actual objects may be at different locations (heap) in memory.
+
+fixed-size, dynamically allocated, Passing Arrays to Method s by Reference, array size cannot be long.
+
+normal assignment of arrays are by Reference (same)
+clone() -&gt; 1D array - deep copy (diff), Multi-dim array - shallow copy (refernces are diff, actual obejcts are same)
+																		(start, upper excluded)			(start, upper included)																														
+Initialize Array using Streams -&gt;  IntStream.range(1,5), IntStream.rangeClosed(1, 4), IntStream.of(1, 2, 3, 4)
+
+Collections :-
+List - ArrayList, Vector (sync), LinkedList (duplicates, null, ordered sequence)
+			 Insert- O(1), Removal- O(1), Retrival- O(n)
+Queue - PriorityQueue, ArrayDequeue (FIFO, No Null, ordered sequence)
+				O(logn), O(logn), O(1)
+				O(1), O(n), O(1)
+Set - HashSet, LinkedHashSet - ordered, TreeSet (no duplicates, 1 null, unordered sequence)
+			Insert- O(1), Removal- O(1), Retrival- O(1)
+			O(1), O(1), O(1)
+			O(logn), O(logn), O(logn)
+Map - HashMap, LinkedHashMap, TreeMap (unique keys, values can be duplicated, one null key)
+			Insert- O(1), Removal- O(1), Retrival- O(1)
+			O(1), O(1), O(1)
+			O(logn), O(logn), O(logn)
+			
+Stack - LIFO, extends Vector, push, pop, peek, empty, search
+
+Iterators :-
+Enumeration - read only, forward sided, only legacy classes
+							Enumeration e = arr.elements(); 
+							int i = (Integer)e.nextElement(); 
+
+Iterator - read &amp; remove, forward sided, universal classes
+					Iterator&lt;Integer&gt; itr =obj.iterator();
+					int i = (Integer)itr.next();
+
+ListIterator - read, add, remove, set, both sided, legacy classes
+				ListIterator&lt;String&gt; namesIterator = names.listIterator(); // forward &amp; backward
+
+hasNext(), next(), nextIndex(), add(), remove(), set(E e), hasPrevious(), previous(), previousIndex()
+
+
+Hashmap&lt;String, Integer&gt; map1= new HashMap&lt;&gt;(); 
+// Not Synchronized, Keys &amp; value can’t be primitive datatype, Key is valid if implements hashCode() &amp; equals() method 
+// Not ordered, Thread-unsafe, initial capacity of 16 &amp; load factor of 0.75
+map1.put(&quot;value&quot;,11);
+map1[&quot;value&quot;]
+map to same map if assign one map to another
+java pointers automatically use gabage collection to clean unreference data
+
+
+ArrayList :-
+ArrayList class -&gt; implements List interface -&gt; extends Collection framework
+-&gt; inherits AbstractList class
+-&gt; creates big size memory on heap memory
+-&gt; primitive types can&#x27;t used, only Wrapper class
+-&gt; not Synchronized, not thread-safe, low performance, slower than Arrays
+
+ArrayList&lt;Integer&gt; arr1 = new ArrayList&lt;Integer&gt;();  // int size, Collection c
+ 
+.add(Obj o); // (int index, Obj o)
+.addAll(Collection c);  // (int index, Collection c)
+.size(), .clear(), .clone(), .contains(Obj o), ensureCapacity(int minCap)
+.forEach(), .get(int index), .set(int index, E e), indexOf(Obj o), lastIndexOf(Obj o)
+isEmpty(), listIterator(), remove(int index)  // (Obj o)
+removeAll(Collection c), removeIf(Predicate filter), removeR
+
+ange(int s1, int s2), subList(int s1, int s2)
+toArray() // (Obj o)
+
+
+LinkedList:-
+LinkedList&lt;String&gt; list = new LinkedList&lt;String&gt;();
+
+addFirst(), addLast(), descendingIterator(), element(), getFirst(), getLast(), offer(E e), offerFirst(), offerLast()
+peek(), peekFirst(), peekLast(), poll(), pollFirst(), pollLast(), pop(), push(E e), remove() // int idx, Obj o
+removeFirst(), removeLast();
+
+
+PriorityQueue :- based on Priority heap (High ASCII value gets high priority), no null, not thread-safe, unbound queues
+class-&gt;implements Queue-&gt;extends Collection
+-&gt; inherits methods from AbstractQueue, AbstractCollection, Collection, and Object class.
+
+PriorityQueue&lt;Integer&gt; pQueue = new PriorityQueue&lt;Integer&gt;();
+// Collection&lt;E&gt; c
+// int capcity
+// int cap, Comparator&lt;E&gt; c
+// PriorityQueue&lt;E&gt; c
+// SortedSet&lt;E&gt; c
+// Comparator&lt;E&gt; c
+
+add(), peek(), poll(), clear(), comparator(), contains(), isEmpty(), toString(), size(), stream()
+
+ArrayDeque :- double-ended queue (add &amp; remove elements from both sides), no null values, faster than Stack &amp; LinkedList
+-&gt; class -&gt; implements Queue , Dequeue
+
+ArrayDeque&lt;E&gt; dq = new ArrayDeque&lt;E&gt;();
+// Collection c
+// int size
+-&gt; all methods of arraylist &amp; linkedlist
+
+HashSet :-
+-&gt; implements Set interface, no duplicates, 1 null allowed, no order
+
+HashSet&lt;ArrayList&gt; set = new HashSet&lt;&gt;();
+// int capacity
+// Collection C
+
+add(), clear(), contains(Obj o), remove(Obj o), iterator(), isEmpty(), size(), clone(), eqauls(), stream()
+
+TreeSet :-  self-balancing binary search tree like a Red-Black Tree, sorted and ascending order
+TreeSet ts = new TreeSet&lt;&gt;();
+// Comparator c
+// Collection c
+// SortedSet s</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-8043-909d-d529665967aa" class="code"><code class="language-JSON">STRINGS:- immutable thread safe, return new obj, 16bits (UTF 16-bit encoding), ends with \0
+String str = new String(&quot;example&quot;); 2 obj, (heap &amp; string constant pool -&gt; present in main heap area)
+
+String intern() -&gt; creates exact copy of string object of heap memory in string constant pool
+
+objects of strings -&gt; immutable
+String-&gt;thread safe, return new obj
+StringBuffer-&gt;mutable, thread safe class
+StringBuilder-&gt;mutable, not thread safe
+String Tokenizer-&gt;class, break strings to tokens
+
+byte ascii[] = { 71, 70, 71 };
+String firstString = new String(ascii); // G,F,G
+String secondString = new String(ascii, 1, 2); // F,G
+
+          char[], int[], StringBuffer, StringBuilder
+String(byte[] byte_arr, int start_index, int length)
+
+.trim(), .startsWith(String prefix), .endsWith(String suf), .isEmpty(), .matches(String regex), .split(String regex), .join(CharSequence delimeter);
+.toCharArray(); // split every character
+
+str1.compareTo(Strinf str2) // str1 - str2
+//&lt;0 before, 0 equal, &gt;0 after
+str1.compareToIgnoreCase(Strinf str2)
+
+.contains(CharSequence seq); // String boolean
+
+String literal (Static Memory)
+new keyword (Heap Memory) - creates new String object in main heap area even it present in String Constatnt Pool (main heap area, previously PermGen-64 MB)
+
+StringBuffer :- mutable, multi-threaded, thread safe (may be performace issues)
+interfaces-&gt;Serializable, Appendable, CharSequence
+StringBuffer sb = new StringBuffer(); // (String str), (int capcaity)
+
+StringBuilder:- mutable, single threaded - not thread safe, high performance
+java.lang.object
+interface-&gt;Serializable, CharASequence
+StringBuilder str=new StringBuilder(); // StringBuilder(int capacity), StringBuilder(String str), StringBuilder(CharSequence seq);
+
+StringTokenizer class in Java is used to break a string into tokens
+
+Methods in String:-
+concat(String str), equalsIgnoreCase(String str), toLowerCase(), toUpperCase(), trim(), replace(char, char), split(str regex), matches(str regex)
+
+Methods in StringBuilder and StringBuffer:-
+append(String s), insert(int offset, String s), replace(int start, int end, String s), delete(int start, int end), deleteCharAt(int index)
+reverse(), setCharAt(int index, char ch), 
+capacity() // 16 bits default, (oldcapacity * 2) +2
+, ensureCapacity(int minimumCapacity)
+
+Common Methods in String, StringBuilder, and StringBuffer:-
+length(), charAt(int index), indexOf(String str), indexOf(String str, int fromIndex), lastIndexOf(String str), lastIndexOf(String str, int fromIndex)	
+substring(int beginIndex), substring(int beginIndex, int endIndex), toString()	
+</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-8040-8bce-f6aa197b1a9f" class="code"><code class="language-JSON">Streams :-
+
+process collections of objects, java8, not a data structure, don&#x27;t change original DS
+
+-&gt; no storage, Pipeline of Functions, Laziness (complete then proceed), Can be infinite, Can be parallelized
+-&gt; use method reference instead of lambda functions
+-&gt; parallel() on stream, parallelStream() on a Collection
+
+Intermediate Operations - method chaining, transform stream to stream
+map(), filter(), sorted(), flatMap(), distinct(), peek()
+
+Terminate Operations - return final result value
+collect(), forEach(), reduce(), count(), min(), max(), findFirst(), anyMatch(), allMatch(), 
+
+
+Lambda Expression :-
+
+-&gt; represent instances of functional interfaces (interfaces with a single abstract method)
+-&gt; Code as Data: Treat functionality as a method argument.
+-&gt; Class Independence: Create functions without defining a class.
+-&gt; Pass and Execute: Pass lambda expressions as objects and execute on demand.
+
+@FunctionalInterface
+interface FuncInter1 {
+    int operation(int a, int b);
+}
+
+public class Test {
+    public static void main(String[] args) {
+
+        FuncInter1 add = (a, b) -&gt; a + b;
+        FuncInter1 multiply = (a, b) -&gt; a * b;
+
+        System.out.println(add.operation(6, 3));  
+        System.out.println(multiply.operation(4, 5)); 
+    }
+}
+
+Default Functional Interfaces:
+Comparable&lt;T&gt;: int compareTo(T o);
+Comparator&lt;T&gt;: int compare(T o1, T o2);
+
+Collections.sort(students, new CustomerSortingComparator());
+students.sort(Comparator.comparing(Student::getName).thenComparing(Student::getAge));
+
+Comparable -&gt; implements within class by compareTo(), no additional parameter needed
+
+Comparator -&gt; implements in different class by compare(), additional obj of class needed</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-8065-b328-d26ea707bdb6" class="code"><code class="language-JSON">Date class:-
+
+Date() : current date and time.
+Date(long milliseconds) : milliseconds since January 1, 1970, 00:00:00 GMT.
+Date(int year, int month, int date)
+Date(int year, int month, int date, int hrs, int min)
+Date(int year, int month, int date, int hrs, int min, int sec)
+Date(String s)
+
+boolean after(Date date), boolean before(Date date)
+int compareTo(Date date) // 0 equal, &lt;0 before, &gt;0  after
+long getTime() // millisecond from 1,1970
+void setTime(long time)
+
+String .toString() // day mon dd hh:mm:ss zz yyyy 
+boolean .equals()
+Date .clone()
+int .hashCode() // OR of two halves
+
+
+DateFormat ( java.text)
+public final String format(Date date)
+
+DateFormat DFormat = DateFormat.getDateInstance();  //  .getInstance(),   .getTimeInstance(), .getCalendar()
+// new SimpleDateFormat(&quot;MM/ dd/ yy&quot;)
+
+Calendar cal = Calendar.getInstance();
+
+String curr_date = DFormat.format(cal.getTime())
+
+
+SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy&quot;); 
+String st = sdf.format(new Date());  // &quot;2024&quot;
+
+String months[] = new DateFormatSymbols().getMonths(); 
+// January, February,.....
+
+
+LocalDate / LocalDateTime:-
+atTime(int hour, int minute, int second*), compareTo()
+equals(), format(), get(), getDayOfMonth(), getDayOfWeek(), getDayOfYear(), getMonth(), getMonthValue()  // 1-12
+getYear(), isAfter(), isBefore(), isEqual(), isLeapYear(), now(), ofPattern(), of()  // year month, day, hr, min, s
+
+minusMinutes(), minusYear(), minusDays(), plusHours(), plusYears(), plusDays()</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1896da0d-29e8-806f-b42d-c44cf0ef7135" class="code"><code class="language-JSON">type conversion -&gt; primitive to primitive
+
+autoboxing -&gt; primitive to wrapper class (no data loss, automatically by compiler)
+
+unboxing -&gt; wrapper class to primitive (manually)
+
+float num1=3.456f
+
+int num;
+num=num1;
+(data goes from right to left)
+
+primitive:-
+int, long, short, byte, float, double, char, boolean
+
+Wrapper:-
+Integer, Long, Short, Bute, Float, Double, Char, Boolean
+
+
+Generics:- Type safety
+
+-&gt; only works with Reference Types (not for int char double...)
+-&gt;Generic Types Differ Based on Their Type Arguments, two obj can&#x27;t assign to anyone
+
+Type Parameters
+T – Type
+E – Element
+K – Key
+N – Number
+V – Value
+
+-&gt; Class - parameterized class/types
+class Test&lt;T, U&gt; {
+    T obj1;  // An object of type T
+    U obj2;  // An object of type U
+    Test(T obj1, U obj2) {
+        this.obj1 = obj1;
+        this.obj2 = obj2;
+    }
+    public void print() {
+        System.out.println(obj1);
+        System.out.println(obj2);
+    }
+}
+class Main{
+    public static void main (String[] args) {
+        Test &lt;String, Integer&gt; obj =
+            new Test&lt;String, Integer&gt;(&quot;GfG&quot;, 15);
+        obj.print();
+    }
+}
+
+-&gt; Methods
+static &lt;T&gt; void genericDisplay(T element) { }
+
+Exceptions :-
+
+finally - always executed even return (overrides), if not return then try &amp; catch must return
+
+checked - compile time, java.lang.Exception
+
+unchecked - runtime, java.lang.RunTimeException &amp;&amp; java.lang.Error
+
+Throwable -&gt; Error, Exception
+
+throw - explicitly, object of Throwable class
+
+throws - may thrown by method, list of execptions
+
+try-with resources - java7, automatically closed, declared locally, java9-outside declaration also
+
+
+Regex Classes and Interfaces:-
+
+Regex in Java provides 3 classes and 1 interface which are as follows:
+
+Pattern Class
+Matcher Class
+PatternSyntaxException Class
+MatchResult Interface
+
+compile()
+matcher()
+matches()
+results()
+
+find() // int start
+start()
+end()
+groupCount()
+group()
+
+Regex Character classes:-
+
+[xyz]
+[^xyz]
+[a-zA-Z]
+[a-f[m-t]] // union
+[a-z &amp;&amp; p-y]  // intersection
+[a-z &amp;&amp; [^bc]
+[a-z &amp;&amp; [^m-p]]
+
+
+Regex Metacharacters:-
+X?
+X+
+X*
+X{n}
+X{n,}
+X{n,m}
+
+. -&gt; any character
+\d -&gt; [0-9]
+\D -&gt; [^0-9]
+\s -&gt; [\t\n\x0B\f\r]  whitespace character
+\S -&gt; [^\s]
+\w -&gt; [a-zA-Z_0-9]
+\W -&gt; [^\w]
+\b -&gt; word boundary
+\B -&gt; non-word boundary</code></pre></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
